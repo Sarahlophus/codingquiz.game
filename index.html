@@ -7,11 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
 
-    <link rel="stylesheet" href="./assets/script.js">
+    <link rel="stylesheet" href="./assets/styles.css">
 </head>
 
 <body>
+    <!-- intro and title -->
+    <div>
+        <h2>Code Quiz</h2>
+        <p>Test your coding knowledge with this quiz game! Can you answer the questions before the timer runs out?</p>
+        <button id="startQuiz">Start Quiz</button>
+        <button id="showScores">Show Highscores</button>
+    </div>
 
+    <!-- questions and answers -->
+    <h3 id="question"></h3>
+    <div id="answers"></div>
+
+    <div id="score"></div>
+
+    <div id="timer">Timer: </div>
+
+    <div id="scoreboard">Scoreboard</div>
 
     <script src="./assets/script.js"></script>
 </body>
