@@ -1,23 +1,31 @@
 // global variables
 const startButton = document.getElementById("startQuiz");
+const scoresButton = document.getElementById("showScores");
 const questionDiv = document.getElementById("question");
 const answersDiv = document.getElementById("answers");
+const scoresDiv = document.getElementById("scores");
 const timerEl = document.getElementById("timer");
 const questions = [
   {
-    title: "is this question 1?",
-    answers: ["Answer 1", "Answer 2", "Answer 3"],
-    correct: "Answer 1",
+    title: "What time of day are cats most active?",
+    answers: ["Daytime", "Dawn/Dusk", "Nighttime"],
+    correct: "Dawn/Dusk",
   },
   {
-    title: "is this question 2?",
-    answers: ["Answer 1", "Answer 2", "Answer 3"],
-    correct: "Answer 3",
+    title: "What is a cat signaling when they show their belly?",
+    answers: ["I want a belly rub", "I'm hungry", "I trust you"],
+    correct: "I trust you",
+  },
+  {
+    title: "A group of cats is called a:",
+    answers: ["Clowder", "Mischief", "Tiny Pride"],
+    correct: "Clowder",
   },
 ];
 let questionIndex = 0;
-let timerCount = 20;
+let timerCount = 12;
 let isWin = false;
+let scoreInput = timerCount;
 
 // function to run quiz game
 function startQuiz() {
@@ -44,9 +52,11 @@ function answerClick() {
   // dertermine the answer the user chose
   let chosenAnswer = this.value;
   // check to see if answer is correct
-  if (chosenAnswer === questions[0].correct) {
+  if (chosenAnswer === questions[questionIndex].correct) {
     // let user know if answer was right
-    alert("correct: hooray!");
+    alert("Correct, +2 bonus!");
+    //add time bonus
+    timerCount = timerCount + 2;
     // move to next question or end game
     questionIndex++;
     if (questions.length > questionIndex) {
@@ -56,14 +66,20 @@ function answerClick() {
     }
   } else {
     // let user know if answer was wrong
-    alert("incorrect: womp, womp");
-    // TODO: subtract time from timer
+    alert("Incorrect, -2 penalty. Try again");
+    // subtract time from timer
+    timerCount = timerCount - 2;
   }
 }
 
 // end quiz and enter initials
 function endQuiz() {
   isWin = true;
+  // enter initials
+  let playerName = prompt(`your score is ${timerCount}. Enter your first name below`);
+  // save player name and score to local storage
+  localStorage.setItem("Player", playerName);
+  localStorage.setItem("Score", timerCount);
 }
 
 // start timer
@@ -71,16 +87,15 @@ function startTimer() {
   startQuiz();
   // Sets timer
   timer = setInterval(function () {
+    // timer decreases by one each second
     timerCount--;
     timerEl.textContent = timerCount;
     if (timerCount >= 0) {
       // Tests if win condition is met
       if (isWin && timerCount > 0) {
         // Clears interval and stops timer
-        alert(timerCount);
+        // alert("your score is: " + timerCount);
         clearInterval(timer);
-        // clearInterval(timer);
-        // winGame();
       }
     }
     // Tests if time has run out
@@ -93,9 +108,31 @@ function startTimer() {
   }, 1000);
 }
 
-// save high scores
+// show  last score on button click
+function displayScores() {
+  // retrieve last scores
+  let lastPlayer = localStorage.getItem("Player");
+  let lastScore = localStorage.getItem("Score");
+  // let user know if there is no current score to beat
+  if (localStorage.key === undefined) {
+    scoresDiv.textContent = "It's your time to shine, there are no current scores!";
+  } else if (lastPlayer === "null") {
+    scoresDiv.textContent = "It's your time to shine, there are no current scores!";
+    // if a current score is present, display score and player name
+  } else {
+    scoresDiv.textContent = `You must beat ${lastPlayer}'s score of ${lastScore} to win!`;
+  }
+}
 
-// show  high scores on button click
+// function clearScores() {
+//   localStorage.clear();
+// }
 
 // initialize - start quiz by clicking button
+// startButton.addEventListener("click", startQuiz);
 startButton.addEventListener("click", startTimer);
+// user clicks 'show last score' button to view last score they must beat
+scoresButton.addEventListener("click", displayScores);
+
+//create 'clear scores' button
+// scoresButton.addEventListener("click", clearScores);
