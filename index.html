@@ -16,29 +16,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
 <body>
     <!-- intro and title -->
-    <div>
+    <header class="title-card">
         <h1>Cat Trivia Quiz</h1>
         <p>Are you a true feline friend? Test your cat knowledge with this quiz! Can you answer the questions before the timer runs out?</p>
-        <button id="startQuiz">Start Quiz</button>
-    </div>
 
-    <!-- questions and answers -->
-    <h2 id="question"></h2>
-    <div id="answers"></div>
+    </header>
+    <main class="main">
+        <!-- questions and answers -->
+        <div class="game-cards">
+            <button id="startQuiz" class="big-buttons"><b>Start Quiz</b></button>
+            <button id="stopQuiz" class="big-buttons">Stop Quiz</button>
+            <h2 id="question"></h2>
+            <div id="answers"></div>
+        </div>
+        <!-- timer -->
+        <div id="timer" class="timer-style">Timer: </div>
+        <!-- show and reset last score -->
+        <div class="game-cards">
+            <button id="showScores" class="big-buttons"> <b>Last Score</b></button>
+            <button id="clearScores" class="big-buttons">Reset Scores</button>
+        </div>
+        <div id="scores"></div>
 
-    <div id="timer">Timer: </div>
-    <div>
-        <button id="showScores">Show Last Score</button>
-        <button id="clearScores">Reset Scores</button>
-    </div>
-    <div id="scores"></div>
-    </div>
+        </div>
 
+    </main>
+
+    <footer class="footer">
+        <h2>Made with ❤️ by Sarah Ann Williams</h2>
+    </footer>
 
 
     <script src="./assets/script.js"></script>
