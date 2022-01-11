@@ -1,10 +1,13 @@
 // global variables
 const startButton = document.getElementById("startQuiz");
+const stopButton = document.getElementById("stopQuiz");
 const scoresButton = document.getElementById("showScores");
+const clearScoreBtn = document.getElementById("clearScores");
 const questionDiv = document.getElementById("question");
 const answersDiv = document.getElementById("answers");
 const scoresDiv = document.getElementById("scores");
 const timerEl = document.getElementById("timer");
+const scoreMsgDiv = document.getElementById("scoreMsgDiv");
 const questions = [
   {
     title: "What time of day are cats most active?",
@@ -29,6 +32,7 @@ let scoreInput = timerCount;
 
 // function to run quiz game
 function startQuiz() {
+  timerCount = 12;
   // clear previous question
   answersDiv.textContent = "";
   // show first question with answer choices
@@ -75,14 +79,9 @@ function answerClick() {
 // end quiz and enter initials
 function endQuiz() {
   isWin = true;
-  // enter initials
-  let playerName = prompt(`your score is ${timerCount}. Enter your first name below`);
-  // save player name and score to local storage
-  localStorage.setItem("Player", playerName);
-  localStorage.setItem("Score", timerCount);
 }
 
-// start timer
+// starts timer, record score & player name at end of game
 function startTimer() {
   startQuiz();
   // Sets timer
@@ -93,17 +92,22 @@ function startTimer() {
     if (timerCount >= 0) {
       // Tests if win condition is met
       if (isWin && timerCount > 0) {
+        // enter name and record player score
+        let playerName = prompt(`your score is ${timerCount}. Enter your first name below`);
+        // save player name and score to local storage
+        localStorage.setItem("Player", playerName);
+        localStorage.setItem("Score", timerCount);
         // Clears interval and stops timer
-        // alert("your score is: " + timerCount);
         clearInterval(timer);
       }
     }
     // Tests if time has run out
-    if (timerCount === 0) {
+    if (timerCount <= 0) {
       // Clears interval
       clearInterval(timer);
       // loseGame();
       alert("you lose: womp, womp");
+      endQuiz();
     }
   }, 1000);
 }
@@ -115,24 +119,43 @@ function displayScores() {
   let lastScore = localStorage.getItem("Score");
   // let user know if there is no current score to beat
   if (localStorage.key === undefined) {
-    scoresDiv.textContent = "It's your time to shine, there are no current scores!";
-  } else if (lastPlayer === "null") {
-    scoresDiv.textContent = "It's your time to shine, there are no current scores!";
+    document.getElementById("beatScore").innerHTML = "It's your time to shine, there are no current scores!";
+    // let scoreMsg = document.createElement("P");
+    // scoreMsg.innerText = "It's your time to shine, there are no current scores!";
+    // scoreMsgDiv.appendChild(scoreMsg);
+  } else if (lastPlayer === null) {
+    document.getElementById("beatScore").innerHTML = "It's your time to shine, there are no current scores!";
+    // let scoreMsg = document.createElement("P");
+    // scoreMsg.innerText = "It's your time to shine, there are no current scores!";
+    // scoreMsgDiv.appendChild(scoreMsg);
     // if a current score is present, display score and player name
   } else {
-    scoresDiv.textContent = `You must beat ${lastPlayer}'s score of ${lastScore} to win!`;
+    document.getElementById("beatScore").innerHTML = `You must beat ${lastPlayer}'s score of ${lastScore} to win!`;
+    // let scoreMsg = document.createElement("P");
+    // scoreMsg.innerText = `You must beat ${lastPlayer}'s score of ${lastScore} to win!`;
+    // scoreMsgDiv.appendChild(scoreMsg);
   }
 }
 
-// function clearScores() {
-//   localStorage.clear();
-// }
+// reset score
+function clearScores() {
+  localStorage.clear();
+}
+
+// 'stop quiz' by reloading page
+function stopQuiz() {
+  location.reload();
+}
 
 // initialize - start quiz by clicking button
 // startButton.addEventListener("click", startQuiz);
 startButton.addEventListener("click", startTimer);
+
+// stops quiz button
+stopButton.addEventListener("click", stopQuiz);
+
 // user clicks 'show last score' button to view last score they must beat
 scoresButton.addEventListener("click", displayScores);
 
-//create 'clear scores' button
-// scoresButton.addEventListener("click", clearScores);
+//create 'reset scores' button
+clearScoreBtn.addEventListener("click", clearScores);

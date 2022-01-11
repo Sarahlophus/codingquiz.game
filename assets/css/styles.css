@@ -21,14 +21,14 @@ h1 {
   padding: 1.5rem;
 }
 
-h2 {
+h2,
+p {
   font-family: "Gloria Hallelujah", cursive;
   font-size: 150%;
   padding: 0.5rem;
 }
 
 p {
-  padding: 0.5rem;
   font-weight: 500;
 }
 
@@ -56,18 +56,18 @@ p {
   display: flex;
 }
 
-.game-cards {
+.game-card {
   align-items: flex-start;
   background-color: #e5fce6;
   border: 5px solid lightblue;
   border-radius: 5px;
   box-shadow: rgb(60 64 67) 0 1px 2px 0, rgb(60 64 67 / 15%) 0 2px 4px 3px;
-  justify-content: space-between;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin: 2rem;
   padding: 1rem;
-  width: 90%;
+  width: 100%;
 }
 
 .timer-style {
@@ -77,13 +77,27 @@ p {
   border-radius: 50px;
   box-shadow: rgb(60 64 67) 0 1px 2px 0, rgb(60 64 67 / 15%) 0 2px 4px 3px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   font-size: 250%;
   font-weight: 600;
+  height: 100%;
   justify-content: center;
   margin: 2rem;
   padding: 1rem;
-  width: 90%;
+  width: 100%;
+}
+
+.score-card {
+  background-color: #e5fce6;
+  border: 5px solid lightblue;
+  border-radius: 5px;
+  box-shadow: rgb(60 64 67) 0 1px 2px 0, rgb(60 64 67 / 15%) 0 2px 4px 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 2rem;
+  padding: 1rem;
+  width: 100%;
 }
 
 .footer {
