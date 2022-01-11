@@ -38,9 +38,10 @@ p {
   border-radius: 8px;
   cursor: pointer;
   font-size: 150%;
-  padding: 0.5rem;
+  padding: 1rem;
   margin: 1rem;
   text-align: center;
+  width: 100%;
 }
 
 .title-card {
@@ -54,6 +55,8 @@ p {
 
 .main {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .game-card {
@@ -84,7 +87,7 @@ p {
   justify-content: center;
   margin: 2rem;
   padding: 1rem;
-  width: 100%;
+  width: 50%;
 }
 
 .score-card {

@@ -5,7 +5,6 @@ const scoresButton = document.getElementById("showScores");
 const clearScoreBtn = document.getElementById("clearScores");
 const questionDiv = document.getElementById("question");
 const answersDiv = document.getElementById("answers");
-const scoresDiv = document.getElementById("scores");
 const timerEl = document.getElementById("timer");
 const scoreMsgDiv = document.getElementById("scoreMsgDiv");
 const questions = [
@@ -23,6 +22,31 @@ const questions = [
     title: "A group of cats is called a:",
     answers: ["Clowder", "Mischief", "Tiny Pride"],
     correct: "Clowder",
+  },
+  {
+    title: "Cats use head-bunting to:",
+    answers: ["Share scent", "Clean their head", "Be annoying"],
+    correct: "Share scent",
+  },
+  {
+    title: "A male cat is called a Tom, and a female cat is called a:",
+    answers: ["Sally", "Colt", "Queen"],
+    correct: "Queen",
+  },
+  {
+    title: "What is a trichobezoar?",
+    answers: ["A breed of cat", "A hairball", "an internal organ"],
+    correct: "A hairball",
+  },
+  {
+    title: "How many whiskers does a cat have? :",
+    answers: ["24", "100", "10"],
+    correct: "24",
+  },
+  {
+    title: "Who has the better sense of hearing?",
+    answers: ["Cat", "Dog", "Human"],
+    correct: "Cat",
   },
 ];
 let questionIndex = 0;
@@ -117,23 +141,18 @@ function displayScores() {
   // retrieve last scores
   let lastPlayer = localStorage.getItem("Player");
   let lastScore = localStorage.getItem("Score");
+
   // let user know if there is no current score to beat
   if (localStorage.key === undefined) {
     document.getElementById("beatScore").innerHTML = "It's your time to shine, there are no current scores!";
-    // let scoreMsg = document.createElement("P");
-    // scoreMsg.innerText = "It's your time to shine, there are no current scores!";
-    // scoreMsgDiv.appendChild(scoreMsg);
   } else if (lastPlayer === null) {
     document.getElementById("beatScore").innerHTML = "It's your time to shine, there are no current scores!";
-    // let scoreMsg = document.createElement("P");
-    // scoreMsg.innerText = "It's your time to shine, there are no current scores!";
-    // scoreMsgDiv.appendChild(scoreMsg);
+  } else if (lastPlayer === "null") {
+    document.getElementById("beatScore").innerHTML = "It's your time to shine, there are no current scores!";
+
     // if a current score is present, display score and player name
   } else {
     document.getElementById("beatScore").innerHTML = `You must beat ${lastPlayer}'s score of ${lastScore} to win!`;
-    // let scoreMsg = document.createElement("P");
-    // scoreMsg.innerText = `You must beat ${lastPlayer}'s score of ${lastScore} to win!`;
-    // scoreMsgDiv.appendChild(scoreMsg);
   }
 }
 
