@@ -1,4 +1,4 @@
-/* elements */
+/* elements (alphabetical) */
 body {
   background: linear-gradient(60deg, #fcffe0, #e5fce6);
   height: 100%;
@@ -6,12 +6,11 @@ body {
 }
 
 button {
-  background-color: yellowgreen;
+  background-color: rgb(236, 158, 244);
   border-radius: 6px;
   cursor: pointer;
-  font-size: 100%;
   padding: 1rem;
-  margin: 1.5rem;
+  margin: 1rem;
   text-align: center;
 }
 
@@ -21,18 +20,21 @@ h1 {
   padding: 1.5rem;
 }
 
-h2,
-p {
+h2 {
   font-family: "Gloria Hallelujah", cursive;
   font-size: 150%;
   padding: 0.5rem;
 }
 
 p {
-  font-weight: 500;
+  font-family: monospace;
+  font-size: 150%;
+  font-weight: 530;
+  padding: 1rem;
 }
 
-/* classes */
+/* classes (alphabetical by title)*/
+/* start, stop, and scores buttons */
 .big-buttons {
   background-color: lightblue;
   border-radius: 8px;
@@ -41,10 +43,9 @@ p {
   padding: 1rem;
   margin: 1rem;
   text-align: center;
-  width: 100%;
 }
 
-.title-card {
+.footer {
   align-content: space-around;
   background-color: lightblue;
   display: flex;
@@ -53,12 +54,7 @@ p {
   text-align: center;
 }
 
-.main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* start/stop buttons and questions/answers */
 .game-card {
   align-items: flex-start;
   background-color: #e5fce6;
@@ -73,6 +69,15 @@ p {
   width: 100%;
 }
 
+/* includes game and score cards */
+.main {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+/* countdown timer */
 .timer-style {
   align-items: center;
   background-color: #e5fce6;
@@ -90,24 +95,20 @@ p {
   width: 50%;
 }
 
-.score-card {
-  background-color: #e5fce6;
-  border: 5px solid lightblue;
-  border-radius: 5px;
-  box-shadow: rgb(60 64 67) 0 1px 2px 0, rgb(60 64 67 / 15%) 0 2px 4px 3px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 2rem;
-  padding: 1rem;
-  width: 100%;
-}
-
-.footer {
+/* header and game intro */
+.title-card {
   align-content: space-around;
   background-color: lightblue;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   text-align: center;
+}
+
+/* media queries */
+@media (max-width: 768px) {
+  .main {
+    align-items: center;
+    flex-direction: column;
+  }
 }

@@ -24,34 +24,29 @@
     <!-- intro and title -->
     <header class="title-card">
         <h1>Cat Trivia Quiz</h1>
-        <p>Are you a true feline friend? Test your cat knowledge with this quiz! Can you answer the questions before the timer runs out?</p>
+        <h2>Are you a true feline friend? Test your cat knowledge with this quiz! Can you answer the questions before the timer runs out?</h2>
 
     </header>
     <main class="main">
-        <!-- questions and answers -->
-        <div class="game-card">
-            <button id="startQuiz" class="big-buttons"><b>Start Quiz</b></button>
-            <button id="stopQuiz" class="big-buttons">Stop Quiz</button>
-            <h2 id="question"></h2>
-            <div id="answers">
-                <!-- button1 id="btn1"-->
-            </div>
-        </div>
-
         <!-- timer -->
         <div id="timer" class="timer-style">Timer: </div>
 
+        <!-- questions and answers -->
+        <div class="game-card">
+            <button id="startQuiz" class="big-buttons"><b>Start Quiz</b></button>
+            <button id="stopQuiz" class="big-buttons">Reset Quiz</button>
+            <p id="question"></p>
+            <div id="answers">
+            </div>
+        </div>
+
         <!-- show and reset last score -->
-        <div class="score-card">
+        <div class="game-card">
             <button id="showScores" class="big-buttons"> <b>Last Score</b></button>
             <button id="clearScores" class="big-buttons">Reset Scores</button>
             <div id="scoreMsgDiv"></div>
             <p id="beatScore"></p>
         </div>
-
-
-
-
 
     </main>
 

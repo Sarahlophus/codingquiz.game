@@ -117,7 +117,7 @@ function startTimer() {
       // Tests if win condition is met
       if (isWin && timerCount > 0) {
         // enter name and record player score
-        let playerName = prompt(`your score is ${timerCount}. Enter your first name below`);
+        let playerName = prompt(`You win! Your score is ${timerCount}. Enter your first name below`);
         // save player name and score to local storage
         localStorage.setItem("Player", playerName);
         localStorage.setItem("Score", timerCount);
