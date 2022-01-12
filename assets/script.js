@@ -50,7 +50,7 @@ const questions = [
   },
 ];
 let questionIndex = 0;
-let timerCount = 12;
+let timerCount = 15;
 let isWin = false;
 let scoreInput = timerCount;
 
