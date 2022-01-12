@@ -131,7 +131,7 @@ function startTimer() {
       clearInterval(timer);
       // loseGame();
       alert("you lose: womp, womp");
-      endQuiz();
+      stopQuiz();
     }
   }, 1000);
 }
