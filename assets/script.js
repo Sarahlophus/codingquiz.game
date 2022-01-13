@@ -50,13 +50,13 @@ const questions = [
   },
 ];
 let questionIndex = 0;
-let timerCount = 15;
+let timerCount = 20;
 let isWin = false;
 let scoreInput = timerCount;
 
 // function to run quiz game
 function startQuiz() {
-  timerCount = 12;
+  timerCount = timerCount;
   // clear previous question
   answersDiv.textContent = "";
   // show first question with answer choices
