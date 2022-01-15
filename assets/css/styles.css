@@ -26,6 +26,10 @@ h2 {
   padding: 0.5rem;
 }
 
+li {
+  list-style-type: none;
+}
+
 p {
   font-family: monospace;
   font-size: 150%;

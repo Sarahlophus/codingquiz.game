@@ -119,8 +119,13 @@ function startTimer() {
         // enter name and record player score
         let playerName = prompt(`You win! Your score is ${timerCount}. Enter your first name below`);
         // save player name and score to local storage
-        localStorage.setItem("Player", playerName);
-        localStorage.setItem("Score", timerCount);
+        const userScore = {
+          player: playerName,
+          score: timerCount,
+        };
+        let allScores = JSON.parse(localStorage.getItem("highScores")) || [];
+        allScores.push(userScore);
+        localStorage.setItem("highScores", JSON.stringify(allScores));
         // Clears interval and stops timer
         clearInterval(timer);
       }
@@ -139,26 +144,39 @@ function startTimer() {
 // show  last score on button click
 function displayScores() {
   // retrieve last scores
-  let lastPlayer = localStorage.getItem("Player");
-  let lastScore = localStorage.getItem("Score");
+  let allScores = JSON.parse(localStorage.getItem("highScores")) || [];
+  document.getElementById("beatScore").innerHTML = "";
 
   // let user know if there is no current score to beat
-  if (localStorage.key === undefined) {
-    document.getElementById("beatScore").innerHTML = "It's your time to shine, there are no current scores!";
-  } else if (lastPlayer === null) {
-    document.getElementById("beatScore").innerHTML = "It's your time to shine, there are no current scores!";
-  } else if (lastPlayer === "null") {
+  if (allScores.length === 0) {
     document.getElementById("beatScore").innerHTML = "It's your time to shine, there are no current scores!";
 
     // if a current score is present, display score and player name
   } else {
-    document.getElementById("beatScore").innerHTML = `You must beat ${lastPlayer}'s score of ${lastScore} to win!`;
+    // loop through each score
+    allScores.sortOn("score");
+    allScores.forEach((score) => {
+      document.getElementById("beatScore").innerHTML += `<li>${score.player}: ${score.score}</li>`;
+    });
   }
 }
+
+// generic function to sort array
+Array.prototype.sortOn = function (key) {
+  this.sort(function (a, b) {
+    if (a[key] > b[key]) {
+      return -1;
+    } else if (a[key] < b[key]) {
+      return 1;
+    }
+    return 0;
+  });
+};
 
 // reset score
 function clearScores() {
   localStorage.clear();
+  displayScores();
 }
 
 // 'stop quiz' by reloading page
