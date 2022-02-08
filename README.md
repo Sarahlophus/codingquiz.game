@@ -18,6 +18,7 @@ This game is a quiz about cat facts!
 - HTML
 - CSS
 - JavaScript
+- Google Fonts
 
 ## Links for repo and live page
 
