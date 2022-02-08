@@ -13,6 +13,12 @@ This game is a quiz about cat facts!
 
 ![code quiz demo](./assets/images/CodeQuiz.gif)
 
+## Techologies and Resources
+
+- HTML
+- CSS
+- JavaScript
+
 ## Links for repo and live page
 
 - Github repository: https://github.com/Sarahlophus/codingquiz.game
